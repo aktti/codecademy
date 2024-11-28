@@ -11,8 +11,6 @@ const limiter = rateLimit({
     message:"To Many Request From This IP,Please Try Again Later"
 })
 
-
-
 app.use(limiter)
 const port =8000;
 app.use(express.json());

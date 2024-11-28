@@ -2,6 +2,7 @@ const { z } = require('zod');
 const { TopLanguageAndSubjectModel, topSubjectModel, TopCarrerBuilding, topCompanyModel, 
 topResourcesModel, topSupportModel, topPlansModel,
 topCommunityModel} = require('../Config/Model/Model');
+const AppError = require('../Uteils/error-handle');
 // const  {topCarrerBuiding} = require('../Config/Model/Model')
 // const TopCarrerBuilding = require('../Config/Model/Model');
 
@@ -172,6 +173,9 @@ const topSupport = async(req,res)=>{
 
   try {
     const { topSupportname } = req.body;
+    if(!topSupportname){
+      throw new AppError("topSupportname is required" , 400)
+    }
     console.log(topSupportname);
     
   if(!topSupportname){
